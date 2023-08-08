@@ -22,19 +22,27 @@ https://hfp69ilv.directus.app/auth/login
 email: testuser@gogodev.net
 pass: 12345678
 */ 
-
 import { ref, Ref } from 'vue';
+import { AuthService } from '@/services/AuthService';
 interface UserAuth {
   email: string;
   password: string;
 }
+
 const userData: Ref<UserAuth> = ref({
   email: '',
   password: '',
 })
 
-const handleOnSubmit = () => {
-  console.log(userData.value)
+
+const handleOnSubmit = async () => {
+  const auth = new AuthService()
+  const res = await auth.login(userData.value.email, userData.value.password)
+  if (res) {
+    alert('Login successful')
+  } else {
+    alert('Login failed')
+  }
   userData.value = {
     email: '',
     password: '',

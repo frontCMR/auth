@@ -1,3 +1,4 @@
+//AuthService con backend
 import { ref, Ref } from "vue"
 
 export class AuthService {
@@ -12,7 +13,11 @@ export class AuthService {
         return this.jwt.value
     }
 
-    async login (email: string, password: string) {
+    getError(): string {
+        return this.error.value
+    }
+
+    async login (email: string, password: string): Promise<boolean> {
         try {
             const res = await fetch("https://hfp69ilv.directus.app/auth/login", {
                 method: "POST",
@@ -35,6 +40,7 @@ export class AuthService {
             return true
         } catch (error) {
             console.log(error);
+            return false
         }
     }
         
