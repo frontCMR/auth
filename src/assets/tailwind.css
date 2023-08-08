@@ -1,0 +1,17 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+
+.labelInput{
+    @apply flex flex-col gap-1
+  }
+
+  .input{
+    @apply p-2 rounded-md text-base border border-gray-600 outline-none
+  }
+  .btn{
+    @apply mx-auto p-2 rounded-md bg-blue-500 text-white w-1/2
+  }
